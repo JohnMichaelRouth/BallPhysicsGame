@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Library
+/Logs
+/MacBuild.app/Contents
+/MichaelRouthBallGameWindows
+/obj/Debug
+/Temp
+/UserSettings
