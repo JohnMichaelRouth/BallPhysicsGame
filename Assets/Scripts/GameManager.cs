@@ -8,12 +8,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public int totalEnemies = 10;
-    public TextMeshProUGUI enemyCountText; 
+    public TextMeshProUGUI scoreText; 
 
-    private int enemyGoal;
     private int currEnemies;
     private bool onMenu = true;
+    private int score;
 
     private void Awake()
     {
@@ -31,20 +30,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        enemyGoal = totalEnemies;
-        UpdateEnemyCountText();
+        score = 0;
+        UpdateScoreText();
     }
 
-    public void EnemyKilled()
+    public void EnemyKilled(int scoreValue)
     {
         currEnemies--;
-        enemyGoal--;
-        UpdateEnemyCountText();
-
-        if (enemyGoal == 0)
-        {
-            Debug.Log("You win!");
-        }
+        score += scoreValue;
+        UpdateScoreText();
     }
 
     public void EnemySpawned()
@@ -62,21 +56,9 @@ public class GameManager : MonoBehaviour
         return currEnemies;
     }
 
-    private void UpdateEnemyCountText()
+    private void UpdateScoreText()
     {
-        if (enemyGoal > 0)
-        {
-            enemyCountText.text = "Enemies Remaining: " + enemyGoal;
-        }
-        else if (enemyGoal == 0) 
-        {
-            enemyCountText.text = "You Win!";
-        }
-        else
-        {
-            enemyCountText.text = "Extra Enemies Killed: " + -enemyGoal;
-        }
-        
+        scoreText.text = "Score: " + score;
     }
 
     public void StartGame()
@@ -94,5 +76,16 @@ public class GameManager : MonoBehaviour
         if (!SceneManager.GetSceneByName("TitleScreen").isLoaded)
             onMenu = true;
         SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
+    }
+
+    public int GetScore()
+    {
+        return score;
+    }
+
+    public void ResetGame()
+    {
+        score = 0;
+        UpdateScoreText ();
     }
 }

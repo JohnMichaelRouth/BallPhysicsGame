@@ -1469,8 +1469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ceb18953c16a747bc31cd3175da0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalEnemies: 11
-  enemyCountText: {fileID: 803163248}
+  scoreText: {fileID: 803163248}
 --- !u!4 &1681681827
 Transform:
   m_ObjectHideFlags: 0

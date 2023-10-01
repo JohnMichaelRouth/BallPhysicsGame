@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public CircleCollider2D enemyCollider;
     public float despawnRadius = 350.0f;
     private Transform playerTransform;
+    public int scoreValue = 100;
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class Enemy : MonoBehaviour
             StartCoroutine(EnemyDie());
 
             // Update the GameManager
-            GameManager.instance.EnemyKilled();
+            GameManager.instance.EnemyKilled(scoreValue);
 
             // Bounce the player up
             Rigidbody2D player = collision.gameObject.GetComponent<Rigidbody2D>();

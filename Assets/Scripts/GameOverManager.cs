@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TitleScreenManager : MonoBehaviour
+public class GameOverManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public TextMeshProUGUI scoreText;
+    // Called when a player has a game over
     void Start()
     {
+        int score = GameManager.instance.GetScore();
+        scoreText.text = "Score: " + score;
+        GameManager.instance.ResetGame();
     }
 
     // Update is called once per frame
@@ -16,11 +21,12 @@ public class TitleScreenManager : MonoBehaviour
         
     }
 
-    public void OnNewGamePressed()
+    public void OnPlayAgainPressed()
     {
-        SceneManager.UnloadSceneAsync("TitleScreen");
+        SceneManager.UnloadSceneAsync("GameOver");
         GameManager.instance.StartGame();
     }
+
 
     public void OnExitPressed()
     {
