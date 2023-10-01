@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro; 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     private int enemyGoal;
     private int currEnemies;
+    private bool onTitle = true;
 
     private void Awake()
     {
@@ -19,6 +21,11 @@ public class GameManager : MonoBehaviour
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+
+        if (!SceneManager.GetSceneByName("TitleScreen").isLoaded)
+            onTitle = true;
+            SceneManager.LoadScene("TitleScreen", LoadSceneMode.Additive);
+
         currEnemies = 0;
     }
 
@@ -70,5 +77,22 @@ public class GameManager : MonoBehaviour
             enemyCountText.text = "Extra Enemies Killed: " + -enemyGoal;
         }
         
+    }
+
+    public void StartGame()
+    {
+        onTitle = false;
+    }
+
+    public bool GetOnTitle()
+    {
+        return onTitle;
+    }
+
+    public void PlayerDied()
+    {
+        if (!SceneManager.GetSceneByName("TitleScreen").isLoaded)
+            onTitle = true;
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
     }
 }

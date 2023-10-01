@@ -18,9 +18,16 @@ public class TitleScreenManager : MonoBehaviour
 
     public void OnNewGamePressed()
     {
-        SceneManager.LoadScene("Gameplay");
         SceneManager.UnloadSceneAsync("TitleScreen");
+        GameManager.instance.StartGame();
     }
+
+    public void OnPlayAgainPressed()
+    {
+        SceneManager.UnloadSceneAsync("GameOver");
+        GameManager.instance.StartGame();
+    }
+
 
     public void OnExitPressed()
     {

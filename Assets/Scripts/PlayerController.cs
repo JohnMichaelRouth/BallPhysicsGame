@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // Start the drag
-        if (Input.GetMouseButtonDown(0) && currentLaunches < maxLaunches)
+        if (Input.GetMouseButtonDown(0) && currentLaunches < maxLaunches && !GameManager.instance.GetOnTitle())
         {
             isDragging = true;
             Time.timeScale = slowMotionFactor; // Slow down time when starting to drag
@@ -153,6 +153,7 @@ public class PlayerController : MonoBehaviour
     {
         body.velocity = Vector2.zero;
         transform.position = startPosition;
+        GameManager.instance.PlayerDied();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
