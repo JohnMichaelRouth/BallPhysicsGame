@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     private int enemyGoal;
     private int currEnemies;
-    private bool onTitle = true;
+    private bool onMenu = true;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         if (!SceneManager.GetSceneByName("TitleScreen").isLoaded)
-            onTitle = true;
+            onMenu = true;
             SceneManager.LoadScene("TitleScreen", LoadSceneMode.Additive);
 
         currEnemies = 0;
@@ -81,18 +81,18 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        onTitle = false;
+        onMenu = false;
     }
 
-    public bool GetOnTitle()
+    public bool GetOnMenu()
     {
-        return onTitle;
+        return onMenu;
     }
 
     public void PlayerDied()
     {
         if (!SceneManager.GetSceneByName("TitleScreen").isLoaded)
-            onTitle = true;
+            onMenu = true;
         SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
     }
 }

@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // Start the drag
-        if (Input.GetMouseButtonDown(0) && currentLaunches < maxLaunches && !GameManager.instance.GetOnTitle())
+        if (Input.GetMouseButtonDown(0) && currentLaunches < maxLaunches && !GameManager.instance.GetOnMenu())
         {
             isDragging = true;
             Time.timeScale = slowMotionFactor; // Slow down time when starting to drag
