@@ -37,7 +37,9 @@ public class GameManager : MonoBehaviour
     public void EnemyKilled(int scoreValue)
     {
         currEnemies--;
-        score += scoreValue;
+        ComboManager.instance.RefreshCombo();
+        int comboCount = ComboManager.instance.GetComboCount();
+        score += scoreValue*comboCount;
         UpdateScoreText();
     }
 
