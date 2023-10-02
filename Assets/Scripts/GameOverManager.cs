@@ -25,6 +25,7 @@ public class GameOverManager : MonoBehaviour
     {
         SceneManager.UnloadSceneAsync("GameOver");
         GameManager.instance.StartGame();
+        GameManager.instance.PlayAgain();
     }
 
 

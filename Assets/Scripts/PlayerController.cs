@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 /*
  * I basically tried to recreate the game that made me want to get into game dev back in 2019
@@ -13,6 +15,9 @@ using UnityEngine;
  */
 public class PlayerController : MonoBehaviour
 {
+    private ParticleSystem particle;
+    private SpriteRenderer sr;
+
     public float launchPower = 2.0f;
     public float slowMotionFactor = 0.1f; // 1/10 Speed
     public int maxLaunches = 1;
@@ -23,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D body;
     private bool isDragging = false;
     private LineRenderer lineRenderer;
+    private TrailRenderer trailRenderer;
     private Vector3 startPosition;
 
     [Header("Sprite Deformation")]
@@ -31,21 +37,59 @@ public class PlayerController : MonoBehaviour
     public float minVelocityForDeformation = 1f; 
     public float maxDragForDeformation = 10f; // Drag distance at which maximum deformation is achieved
 
+    [Header("Chromatic Aberration")]
+    public float chromAbIntWhileDrag = 0.3f;
+    public float defaultChromAb = 0.05f;
+    private ChromaticAberration chromaticAberration;
+
+    [Header("Health")]
+    public float maxHealth = 10;
+    private float health;
+
+    private void Awake()
+    {
+        sr = GetComponentInChildren<SpriteRenderer>();
+        particle = GetComponentInChildren<ParticleSystem>();
+    }
+
     private void Start()
     {
         body = GetComponent<Rigidbody2D>();
         lineRenderer = GetComponent<LineRenderer>();
+        trailRenderer = GetComponent<TrailRenderer>();
         startPosition = transform.position;
+
+        Volume volume = FindObjectOfType<Volume>();
+        if (volume.profile.TryGet(out chromaticAberration))
+        {
+            chromaticAberration.intensity.Override(defaultChromAb);
+        }
+
+        health = maxHealth;
     }
 
     private void Update()
     {
+        if (!GameManager.instance.GetOnMenu())
+        {
+            health -= Time.deltaTime;
+            if(health <= 0f)
+            {
+                health = 0f;
+                KillPlayer();
+            }
+            GameManager.instance.UpdateHealthBar(health,maxHealth);
+        }
+        
+
         // Start the drag
         if (Input.GetMouseButtonDown(0) && currentLaunches < maxLaunches && !GameManager.instance.GetOnMenu())
         {
             isDragging = true;
             Time.timeScale = slowMotionFactor; // Slow down time when starting to drag
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
+
+            chromaticAberration.intensity.Override(chromAbIntWhileDrag);
         }
 
         // End the drag and launch the player
@@ -56,6 +100,8 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = 1.0f; // Reset time back to normal when releasing the drag
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
             Launch();
+
+            chromaticAberration.intensity.Override(defaultChromAb);
         }
 
         // Logic for trajectory line
@@ -151,8 +197,22 @@ public class PlayerController : MonoBehaviour
 
     public void KillPlayer()
     {
+        health = 0f;
+
+        body.AddForce(Vector2.up * 10f, ForceMode2D.Impulse);
+
+        //display particles
+        particle.Play();
+
+        //disable sprite
+        sr.enabled = false;
+
+        trailRenderer.enabled = false;
+
         body.velocity = Vector2.zero;
-        transform.position = startPosition;
+
+        body.gravityScale = 0f;
+
         GameManager.instance.PlayerDied();
     }
 
@@ -163,5 +223,18 @@ public class PlayerController : MonoBehaviour
         {
             currentLaunches = 0; // Get your jumps back :D
         }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            health = maxHealth;
+        }
+    }
+
+    public void RestartGame()
+    {
+        health = maxHealth;
+        transform.position = startPosition;
+        sr.enabled = true;
+        trailRenderer.enabled = true;
+        body.gravityScale = 1f;
     }
 }

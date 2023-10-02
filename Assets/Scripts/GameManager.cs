@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using TMPro; 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public TextMeshProUGUI scoreText; 
+    public PlayerController playerController;
+
+    public TextMeshProUGUI scoreText;
+    public Image healthBar;
 
     private int currEnemies;
     private bool onMenu = true;
@@ -89,5 +93,15 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
         UpdateScoreText ();
+    }
+
+    public void PlayAgain()
+    {
+        playerController.RestartGame();
+    }
+
+    public void UpdateHealthBar(float health, float maxHealth)
+    {
+        healthBar.fillAmount = health / maxHealth;
     }
 }
