@@ -37,7 +37,7 @@ public class ComboManager : MonoBehaviour
     {
         if(timeLeft > 0)
         {
-            timeLeft -= Time.deltaTime;
+            timeLeft -= Time.deltaTime * 1/Time.timeScale;
             timerBar.fillAmount = timeLeft / maxTime;
         }
         if(timeLeft <= 0)

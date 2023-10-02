@@ -5041,7 +5041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyCollider: {fileID: 0}
-  despawnRadius: 200
+  despawnRadius: 150
   scoreValue: 100
   enemyAudioSource: {fileID: -1855267627685902476}
   deathSound: {fileID: 8300000, guid: ec99076503421134a90c5014f5e03933, type: 3}

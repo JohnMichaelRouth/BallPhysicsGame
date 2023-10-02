@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public Image healthBar;
 
+    public float slowMotionFactor = 0.2f;
+
     private int currEnemies;
     private bool onMenu = true;
     private int score;

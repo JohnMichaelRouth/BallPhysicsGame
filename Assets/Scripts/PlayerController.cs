@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sr;
 
     public float launchPower = 2.0f;
-    public float slowMotionFactor = 0.1f; // 1/10 Speed
+    private float slowMotionFactor; // 1/10 Speed
     public int maxLaunches = 1;
     public int killHeight = -2;
     private int currentLaunches = 0;
@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         trailRenderer = GetComponent<TrailRenderer>();
         startPosition = transform.position;
+        slowMotionFactor = GameManager.instance.slowMotionFactor;
 
         Volume volume = FindObjectOfType<Volume>();
         if (volume.profile.TryGet(out chromaticAberration))
@@ -80,8 +81,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!GameManager.instance.GetOnMenu())
         {
-            health -= Time.deltaTime;
-            if(health <= 0f)
+            health -= Time.deltaTime * 1 / Time.timeScale;
+            if (health <= 0f)
             {
                 health = 0f;
                 KillPlayer();
