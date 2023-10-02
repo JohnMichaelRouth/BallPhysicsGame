@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
     private Transform playerTransform;
     public int scoreValue = 100;
 
+    public AudioSource enemyAudioSource;
+    public AudioClip deathSound;
+
     private void Awake()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
@@ -55,6 +58,9 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator EnemyDie()
     {
+        // Play death sound
+        enemyAudioSource.PlayOneShot(deathSound);
+
         //display particles
         particle.Play();
 

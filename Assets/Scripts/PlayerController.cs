@@ -46,6 +46,10 @@ public class PlayerController : MonoBehaviour
     public float maxHealth = 10;
     private float health;
 
+    [Header("AudioFiltering")]
+    public AudioSource backgroundMusic;
+    public AudioLowPassFilter lowPassFilter;
+
     private void Awake()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
@@ -90,6 +94,7 @@ public class PlayerController : MonoBehaviour
             Time.fixedDeltaTime = 0.02f * Time.timeScale;
 
             chromaticAberration.intensity.Override(chromAbIntWhileDrag);
+            lowPassFilter.cutoffFrequency = 1000;
         }
 
         // End the drag and launch the player
@@ -102,6 +107,7 @@ public class PlayerController : MonoBehaviour
             Launch();
 
             chromaticAberration.intensity.Override(defaultChromAb);
+            lowPassFilter.cutoffFrequency = 22000;
         }
 
         // Logic for trajectory line
