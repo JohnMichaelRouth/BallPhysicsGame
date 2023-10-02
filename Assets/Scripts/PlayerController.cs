@@ -46,9 +46,11 @@ public class PlayerController : MonoBehaviour
     public float maxHealth = 10;
     private float health;
 
-    [Header("AudioFiltering")]
+    [Header("Audio")]
     public AudioSource backgroundMusic;
     public AudioLowPassFilter lowPassFilter;
+    public AudioSource audioSource;
+    public AudioClip deathSound;
 
     private void Awake()
     {
@@ -204,6 +206,10 @@ public class PlayerController : MonoBehaviour
     public void KillPlayer()
     {
         health = 0f;
+        GameManager.instance.UpdateHealthBar(0,maxHealth);
+
+        // Play death sound
+        audioSource.PlayOneShot(deathSound);
 
         body.AddForce(Vector2.up * 10f, ForceMode2D.Impulse);
 

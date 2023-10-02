@@ -39,6 +39,9 @@ public class Enemy : MonoBehaviour
             // Immediately deactivate the collider so it won't be hit again
             enemyCollider.enabled = false;
 
+            // Play death sound
+            enemyAudioSource.PlayOneShot(deathSound);
+
             // Kill this enemy
             StartCoroutine(EnemyDie());
 
@@ -58,9 +61,6 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator EnemyDie()
     {
-        // Play death sound
-        enemyAudioSource.PlayOneShot(deathSound);
-
         //display particles
         particle.Play();
 
