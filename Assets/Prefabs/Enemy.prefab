@@ -5043,6 +5043,7 @@ MonoBehaviour:
   enemyCollider: {fileID: 0}
   despawnRadius: 150
   scoreValue: 100
+  scoreTextPrefab: {fileID: 3356392390240965980, guid: 8ce9d2489894f5e4d856dc3ec51a7577, type: 3}
   enemyAudioSource: {fileID: -1855267627685902476}
   deathSound: {fileID: 8300000, guid: ec99076503421134a90c5014f5e03933, type: 3}
 --- !u!82 &-1855267627685902476
