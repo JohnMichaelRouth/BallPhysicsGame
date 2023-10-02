@@ -49,8 +49,10 @@ public class PlayerController : MonoBehaviour
     [Header("Audio")]
     public AudioSource backgroundMusic;
     public AudioLowPassFilter lowPassFilter;
-    public AudioSource audioSource;
+    public AudioSource deathAudioSource;
     public AudioClip deathSound;
+    public AudioSource launchAudioSource;
+    public AudioClip launchSound;
 
     private void Awake()
     {
@@ -110,6 +112,7 @@ public class PlayerController : MonoBehaviour
 
             chromaticAberration.intensity.Override(defaultChromAb);
             lowPassFilter.cutoffFrequency = 22000;
+            launchAudioSource.PlayOneShot(launchSound);
         }
 
         // Logic for trajectory line
@@ -209,7 +212,7 @@ public class PlayerController : MonoBehaviour
         GameManager.instance.UpdateHealthBar(0,maxHealth);
 
         // Play death sound
-        audioSource.PlayOneShot(deathSound);
+        deathAudioSource.PlayOneShot(deathSound);
 
         body.AddForce(Vector2.up * 10f, ForceMode2D.Impulse);
 
