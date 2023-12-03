@@ -14,3 +14,5 @@
 Assembly-CSharp.csproj
 MichaelRouthArcadeGameSubmission.zip
 /BallGameWebGLBuild
+*.csproj
+Assembly-CSharp.csproj

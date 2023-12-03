@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 547717137}
   - component: {fileID: 547717136}
   m_Layer: 6
-  m_Name: Text (TMP)
+  m_Name: ThanksJacobText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,11 +268,11 @@ RectTransform:
   m_Father: {fileID: 1482973586}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -28}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -348, y: -185}
-  m_SizeDelta: {x: 343.3181, y: 41.8877}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 22, y: 177}
+  m_SizeDelta: {x: 343.3181, y: 41.887695}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &547717136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 990359986}
   - component: {fileID: 990359985}
   m_Layer: 6
-  m_Name: Text (TMP)
+  m_Name: TitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

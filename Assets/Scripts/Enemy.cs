@@ -14,6 +14,9 @@ public class Enemy : MonoBehaviour
     public AudioSource enemyAudioSource;
     public AudioClip deathSound;
 
+    public GameObject scorePopupPrefab;
+    public Sprite[] scoreSprites; // assigned in editor
+
     private void Awake()
     {
         sr = GetComponentInChildren<SpriteRenderer>();
@@ -61,6 +64,8 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator EnemyDie()
     {
+        ShowScorePopup(scoreValue);
+
         //display particles
         particle.Play();
 
@@ -72,6 +77,16 @@ public class Enemy : MonoBehaviour
 
         // Kill this enemy
         Destroy(this.gameObject);
+    }
+
+    void ShowScorePopup(int score)
+    {
+        GameObject scorePopup = Instantiate(scorePopupPrefab, transform.position, Quaternion.identity);
+        ScorePopup popupScript = scorePopup.GetComponent<ScorePopup>();
+
+        // Assuming score values are in hundreds and sprites are in the order of 100, 200, ..., 9000
+        int spriteIndex = Mathf.Max(0, ComboManager.instance.GetComboCount() - 1);
+        popupScript.SetScoreSprite(scoreSprites[spriteIndex]);
     }
 }
 
