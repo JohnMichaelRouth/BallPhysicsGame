@@ -21,12 +21,13 @@ public class SuperBounceEnemy : Enemy
         GameManager.instance.EnemyKilled(scoreValue);
 
         // Bounce the player up
-        Rigidbody2D player = collision.gameObject.GetComponent<Rigidbody2D>();
-        if (player != null)
+        Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
+
+        if (playerRb != null && playerRb.bodyType == RigidbodyType2D.Dynamic)
         {
             float upwardForce = 10f;
-            player.velocity = new Vector3(player.velocity.x * 0.5f, 0, 0); // set y velocity to 0 and halve x velocity
-            player.AddForce(Vector2.up * upwardForce * superBounceStrength, ForceMode2D.Impulse);
+            playerRb.velocity = new Vector3(playerRb.velocity.x * 0.5f, 0, 0); // set y velocity to 0 and halve x velocity
+            playerRb.AddForce(Vector2.up * upwardForce * superBounceStrength, ForceMode2D.Impulse);
         }
 
     }

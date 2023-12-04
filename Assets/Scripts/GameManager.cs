@@ -104,6 +104,6 @@ public class GameManager : MonoBehaviour
 
     public void UpdateHealthBar(float health, float maxHealth)
     {
-        healthBar.fillAmount = health / maxHealth;
+        healthBar.fillAmount = Mathf.Clamp01(health / (maxHealth - 0.1f));
     }
 }

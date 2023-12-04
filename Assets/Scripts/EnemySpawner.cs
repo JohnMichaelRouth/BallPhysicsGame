@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
     public float minY = 3f;
     public int maxEnemies = 30;
     private Transform playerTransform;
-    public List<EnemyType> enemyTypes;
+    public List<EnemyType> enemyTypes; // set in the editor
 
 
     private float nextSpawnTime;
