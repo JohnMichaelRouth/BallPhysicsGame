@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d6ed3580ae50e6b498b58c27db54a414, type: 2}
+  - {fileID: 2100000, guid: 033f1f8090d27734488ebca409c4995f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2a3eee9785ccc0141a2ea29b46033915, type: 2}
-  m_Color: {r: 0.8679245, g: 0.21616231, b: 0.21616231, a: 1}
+  m_Color: {r: 0.8666667, g: 0.47089186, b: 0.21568626, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -307,7 +307,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.8666667, g: 0.21568628, b: 0.21568628, a: 1}
+      maxColor: {r: 1, g: 0.66086817, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4903,7 +4903,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d6ed3580ae50e6b498b58c27db54a414, type: 2}
+  - {fileID: 2100000, guid: 033f1f8090d27734488ebca409c4995f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4968,7 +4968,7 @@ GameObject:
   - component: {fileID: 5223812516830698059}
   - component: {fileID: -1855267627685902476}
   m_Layer: 3
-  m_Name: Enemy
+  m_Name: GoldenEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5042,20 +5042,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyCollider: {fileID: 68565784783450282}
   despawnRadius: 150
-  scoreValue: 100
+  scoreValue: 1000
   enemyAudioSource: {fileID: -1855267627685902476}
   deathSound: {fileID: 8300000, guid: ec99076503421134a90c5014f5e03933, type: 3}
   scorePopupPrefab: {fileID: 393774220398269564, guid: abe906cc1e53abc458bccf2efb0510e9, type: 3}
   scoreSprites:
-  - {fileID: 21300000, guid: 1c5e7d14163664744a9661bb107e2b1c, type: 3}
-  - {fileID: 21300000, guid: 82d2e55e43d03c44aaf5087763e0278f, type: 3}
-  - {fileID: 21300000, guid: 293c05a8849c86549b0405bf9dc73f13, type: 3}
-  - {fileID: 21300000, guid: dd6613e201606b741b1ba2fda5b864aa, type: 3}
-  - {fileID: 21300000, guid: 3bd4453c0f5618e4fa50e9317d0c0ec4, type: 3}
-  - {fileID: 21300000, guid: 56c5f2180979e4440ae5f53db20ae1ee, type: 3}
-  - {fileID: 21300000, guid: 4fb761cf2abdab442bdbeedb40f20c18, type: 3}
-  - {fileID: 21300000, guid: c784ee762df6a264596bc948c98b3bde, type: 3}
-  - {fileID: 21300000, guid: 25a270de64cd23f42b432ade8cd8abbf, type: 3}
+  - {fileID: 21300000, guid: 42569b24bcc598040ae98f4464605ae8, type: 3}
+  - {fileID: 21300000, guid: 27da6d83c2fd42845a46600a9b4a1c30, type: 3}
+  - {fileID: 21300000, guid: 2f39f22c3efeddc4d9e996e1392792c7, type: 3}
+  - {fileID: 21300000, guid: f455b19c0e4523345835030796dd53cb, type: 3}
+  - {fileID: 21300000, guid: d9fc4adc1339b4841b3d4b88f6f37ce3, type: 3}
+  - {fileID: 21300000, guid: 4d1c2de7ce249f3458d5f4c46e07bd6c, type: 3}
+  - {fileID: 21300000, guid: 8931fc15462f9464c9aacbb44e74b7a1, type: 3}
+  - {fileID: 21300000, guid: d3ae6b1a4392b804381c6623c9ac08b8, type: 3}
+  - {fileID: 21300000, guid: 286e7badbfd5df847894f6e2e9fc682e, type: 3}
 --- !u!82 &-1855267627685902476
 AudioSource:
   m_ObjectHideFlags: 0

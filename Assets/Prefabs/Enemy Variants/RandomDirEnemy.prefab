@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d6ed3580ae50e6b498b58c27db54a414, type: 2}
+  - {fileID: 2100000, guid: 2498e7d03ad6a2247b3e52067725ef09, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2a3eee9785ccc0141a2ea29b46033915, type: 2}
-  m_Color: {r: 0.8679245, g: 0.21616231, b: 0.21616231, a: 1}
+  m_Color: {r: 0.7252934, g: 0.21568626, b: 0.8666667, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -307,7 +307,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.8666667, g: 0.21568628, b: 0.21568628, a: 1}
+      maxColor: {r: 0.6692486, g: 0.21568626, b: 0.8666667, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4903,7 +4903,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d6ed3580ae50e6b498b58c27db54a414, type: 2}
+  - {fileID: 2100000, guid: 2498e7d03ad6a2247b3e52067725ef09, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4968,7 +4968,7 @@ GameObject:
   - component: {fileID: 5223812516830698059}
   - component: {fileID: -1855267627685902476}
   m_Layer: 3
-  m_Name: Enemy
+  m_Name: RandomDirEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
