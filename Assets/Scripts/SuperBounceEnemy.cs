@@ -2,17 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SuperBounceEnemy : MonoBehaviour
+public class SuperBounceEnemy : Enemy
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public float superBounceStrength = 2f;
 
-    // Update is called once per frame
-    void Update()
+    protected override void HandlePlayerCollision(Collision2D collision)
     {
-        
+        // Immediately deactivate the collider so it won't be hit again
+        enemyCollider.enabled = false;
+
+        // Play death sound
+        enemyAudioSource.PlayOneShot(deathSound);
+
+        // Kill this enemy
+        StartCoroutine(EnemyDie());
+
+        // Update the GameManager
+        GameManager.instance.EnemyKilled(scoreValue);
+
+        // Bounce the player up
+        Rigidbody2D player = collision.gameObject.GetComponent<Rigidbody2D>();
+        if (player != null)
+        {
+            float upwardForce = 10f;
+            player.velocity = new Vector3(player.velocity.x * 0.5f, 0, 0); // set y velocity to 0 and halve x velocity
+            player.AddForce(Vector2.up * upwardForce * superBounceStrength, ForceMode2D.Impulse);
+        }
+
     }
 }
