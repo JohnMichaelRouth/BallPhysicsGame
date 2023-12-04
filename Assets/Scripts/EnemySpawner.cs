@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
+[System.Serializable]
+public class EnemyType
+{
+    public GameObject prefab;
+    public float spawnWeight;
+}
+
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;      
@@ -12,9 +19,10 @@ public class EnemySpawner : MonoBehaviour
     public float minY = 3f;
     public int maxEnemies = 30;
     private Transform playerTransform;
+    public List<EnemyType> enemyTypes;
 
 
-  private float nextSpawnTime;
+    private float nextSpawnTime;
 
     private void Awake()
     {
@@ -32,11 +40,36 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
+        GameObject enemyToSpawn = ChooseEnemyType();
         float xSpawnPos = Random.Range(playerTransform.position.x - spawnRangeX, playerTransform.position.x + spawnRangeX);
         float randomWeight = (Random.Range(0f, 1f) * Random.Range(0f, 1f));  // Square the random value to weight it
         float ySpawnPos = Mathf.Lerp(minY, maxY, randomWeight);
-        Instantiate(enemyPrefab, new Vector3(xSpawnPos, ySpawnPos, 0), Quaternion.identity);
+        Instantiate(enemyToSpawn, new Vector3(xSpawnPos, ySpawnPos, 0), Quaternion.identity);
         GameManager.instance.EnemySpawned();
+    }
+
+    private GameObject ChooseEnemyType()
+    {
+        float totalWeight = 0f;
+        foreach (var enemyType in enemyTypes)
+        {
+            totalWeight += enemyType.spawnWeight;
+        }
+
+        float randomWeight = Random.Range(0, totalWeight);
+        float weightSum = 0f;
+
+        foreach (var enemyType in enemyTypes)
+        {
+            weightSum += enemyType.spawnWeight;
+            if (randomWeight <= weightSum)
+            {
+                return enemyType.prefab;
+            }
+        }
+
+        // Fallback if something goes wrong
+        return enemyPrefab;
     }
 }
 

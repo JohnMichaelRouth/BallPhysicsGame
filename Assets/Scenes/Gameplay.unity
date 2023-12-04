@@ -1130,6 +1130,17 @@ MonoBehaviour:
   maxY: 175
   minY: 2
   maxEnemies: 100
+  enemyTypes:
+  - prefab: {fileID: 9187473747714025813, guid: 58175106a946a0548bf4f4d15fc0cd3b, type: 3}
+    spawnWeight: 100
+  - prefab: {fileID: 9187473747714025813, guid: 42f12005d9144764fb13e03a650497f9, type: 3}
+    spawnWeight: 5
+  - prefab: {fileID: 9187473747714025813, guid: df868cff763e4b5429b5ee2aa5eb800e, type: 3}
+    spawnWeight: 10
+  - prefab: {fileID: 9187473747714025813, guid: d244d3de58751e546b7dad4f49fa0fff, type: 3}
+    spawnWeight: 20
+  - prefab: {fileID: 9187473747714025813, guid: a170af2d9ef2e0a40b10fbd1855b390c, type: 3}
+    spawnWeight: 10
 --- !u!1 &1605936984
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,7 +1581,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681681823}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2133,7 +2144,7 @@ PrefabInstance:
     - target: {fileID: 1538263871326639178, guid: 1253a29ab30b9484da3def11515c13bd, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 85b7f1469c79b78469415f1683dbe89d, type: 2}
+      objectReference: {fileID: 2100000, guid: 916991104007ebc468f405e2ba50e679, type: 2}
     - target: {fileID: 1631004681157196144, guid: 1253a29ab30b9484da3def11515c13bd, type: 3}
       propertyPath: m_Name
       value: Player
