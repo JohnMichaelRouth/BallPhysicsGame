@@ -16,6 +16,10 @@ public class GameOverManager : MonoBehaviour
     {
         scoresFilePath = Path.Combine(Application.persistentDataPath, "highscores.json");
         int score = GameManager.instance.GetScore();
+        //Add score as currency
+        CurrencyManager.Instance.AddCurrencyWithLimit(score / 100);
+        //Adds daily bonus if its a new day
+        DailyBonusManager.Instance.AwardDailyBonus();
         scoreText.text = "Score: " + score;
         SaveScore(score);
         DisplayHighScores();
