@@ -39,30 +39,35 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            // Immediately deactivate the collider so it won't be hit again
-            enemyCollider.enabled = false;
-
-            // Play death sound
-            enemyAudioSource.PlayOneShot(deathSound);
-
-            // Kill this enemy
-            StartCoroutine(EnemyDie());
-
-            // Update the GameManager
-            GameManager.instance.EnemyKilled(scoreValue);
-
-            // Bounce the player up
-            Rigidbody2D player = collision.gameObject.GetComponent<Rigidbody2D>();
-            if (player != null)
-            {
-                float upwardForce = 10f;
-                player.velocity = new Vector3(player.velocity.x * 0.5f, 0, 0); // set y velocity to 0 and halve x velocity
-                player.AddForce(Vector2.up * upwardForce, ForceMode2D.Impulse);
-            }
+            HandlePlayerCollision(collision);
         }
     }
 
-    private IEnumerator EnemyDie()
+    protected virtual void HandlePlayerCollision(Collision2D collision)
+    {
+        // Immediately deactivate the collider so it won't be hit again
+        enemyCollider.enabled = false;
+
+        // Play death sound
+        enemyAudioSource.PlayOneShot(deathSound);
+
+        // Kill this enemy
+        StartCoroutine(EnemyDie());
+
+        // Update the GameManager
+        GameManager.instance.EnemyKilled(scoreValue);
+
+        // Bounce the player up
+        Rigidbody2D player = collision.gameObject.GetComponent<Rigidbody2D>();
+        if (player != null)
+        {
+            float upwardForce = 10f;
+            player.velocity = new Vector3(player.velocity.x * 0.5f, 0, 0); // set y velocity to 0 and halve x velocity
+            player.AddForce(Vector2.up * upwardForce, ForceMode2D.Impulse);
+        }
+    }
+
+    protected IEnumerator EnemyDie()
     {
         ShowScorePopup(scoreValue);
 

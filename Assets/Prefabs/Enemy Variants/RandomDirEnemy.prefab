@@ -4965,8 +4965,8 @@ GameObject:
   - component: {fileID: 4015706073759855878}
   - component: {fileID: 68565784783450282}
   - component: {fileID: 3671028945829014867}
-  - component: {fileID: 5223812516830698059}
   - component: {fileID: -1855267627685902476}
+  - component: {fileID: 6634010954614611375}
   m_Layer: 3
   m_Name: RandomDirEnemy
   m_TagString: Enemy
@@ -5028,34 +5028,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5223812516830698059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9187473747714025813}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9105fe64f08df13478ded459ef7e0c1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyCollider: {fileID: 68565784783450282}
-  despawnRadius: 150
-  scoreValue: 100
-  enemyAudioSource: {fileID: -1855267627685902476}
-  deathSound: {fileID: 8300000, guid: ec99076503421134a90c5014f5e03933, type: 3}
-  scorePopupPrefab: {fileID: 393774220398269564, guid: abe906cc1e53abc458bccf2efb0510e9, type: 3}
-  scoreSprites:
-  - {fileID: 21300000, guid: 1c5e7d14163664744a9661bb107e2b1c, type: 3}
-  - {fileID: 21300000, guid: 82d2e55e43d03c44aaf5087763e0278f, type: 3}
-  - {fileID: 21300000, guid: 293c05a8849c86549b0405bf9dc73f13, type: 3}
-  - {fileID: 21300000, guid: dd6613e201606b741b1ba2fda5b864aa, type: 3}
-  - {fileID: 21300000, guid: 3bd4453c0f5618e4fa50e9317d0c0ec4, type: 3}
-  - {fileID: 21300000, guid: 56c5f2180979e4440ae5f53db20ae1ee, type: 3}
-  - {fileID: 21300000, guid: 4fb761cf2abdab442bdbeedb40f20c18, type: 3}
-  - {fileID: 21300000, guid: c784ee762df6a264596bc948c98b3bde, type: 3}
-  - {fileID: 21300000, guid: 25a270de64cd23f42b432ade8cd8abbf, type: 3}
 --- !u!82 &-1855267627685902476
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5152,3 +5124,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6634010954614611375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9187473747714025813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a05710c88754147b95ab3d160e6e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCollider: {fileID: 68565784783450282}
+  despawnRadius: 150
+  scoreValue: 100
+  enemyAudioSource: {fileID: -1855267627685902476}
+  deathSound: {fileID: 8300000, guid: ec99076503421134a90c5014f5e03933, type: 3}
+  scorePopupPrefab: {fileID: 393774220398269564, guid: abe906cc1e53abc458bccf2efb0510e9, type: 3}
+  scoreSprites:
+  - {fileID: 21300000, guid: 1c5e7d14163664744a9661bb107e2b1c, type: 3}
+  - {fileID: 21300000, guid: 82d2e55e43d03c44aaf5087763e0278f, type: 3}
+  - {fileID: 21300000, guid: 293c05a8849c86549b0405bf9dc73f13, type: 3}
+  - {fileID: 21300000, guid: dd6613e201606b741b1ba2fda5b864aa, type: 3}
+  - {fileID: 21300000, guid: 3bd4453c0f5618e4fa50e9317d0c0ec4, type: 3}
+  - {fileID: 21300000, guid: 56c5f2180979e4440ae5f53db20ae1ee, type: 3}
+  - {fileID: 21300000, guid: 4fb761cf2abdab442bdbeedb40f20c18, type: 3}
+  - {fileID: 21300000, guid: c784ee762df6a264596bc948c98b3bde, type: 3}
+  - {fileID: 21300000, guid: 25a270de64cd23f42b432ade8cd8abbf, type: 3}
