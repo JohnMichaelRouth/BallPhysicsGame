@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikyEnemy : MonoBehaviour
+public class SpikyEnemy : Enemy
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void HandlePlayerCollision(Collision2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Player dies when they hit spiky enemy
+        PlayerController playerController = collision.gameObject.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            playerController.KillPlayer();
+        }
     }
 }
