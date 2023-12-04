@@ -30,8 +30,6 @@ public class PlayerController : MonoBehaviour
     private LineRenderer lineRenderer;
     private TrailRenderer trailRenderer;
     private Vector3 startPosition;
-    private bool isTouchingWall = false;
-
 
     [Header("Sprite Deformation")]
     public Transform spriteTransform; // Seperated the sprite just like in class
@@ -81,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.instance.GetOnMenu() && !isTouchingWall)
+        if (!GameManager.instance.GetOnMenu())
         {
             health -= Time.deltaTime * 1 / Time.timeScale;
             if (health <= 0f)
@@ -235,23 +233,12 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            isTouchingWall = true;
-        }
+    {   
+        // Tags are really useful and I'm glad I found them this early  s
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Wall"))
         {
             currentLaunches = 0; // Get your jumps back :D
             health = maxHealth;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            isTouchingWall = false;
         }
     }
 

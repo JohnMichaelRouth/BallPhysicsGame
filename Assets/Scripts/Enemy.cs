@@ -58,13 +58,12 @@ public class Enemy : MonoBehaviour
         GameManager.instance.EnemyKilled(scoreValue);
 
         // Bounce the player up
-        Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
-
-        if (playerRb != null && playerRb.bodyType == RigidbodyType2D.Dynamic)
+        Rigidbody2D player = collision.gameObject.GetComponent<Rigidbody2D>();
+        if (player != null)
         {
             float upwardForce = 10f;
-            playerRb.velocity = new Vector3(playerRb.velocity.x * 0.5f, 0, 0); // set y velocity to 0 and halve x velocity
-            playerRb.AddForce(Vector2.up * upwardForce, ForceMode2D.Impulse);
+            player.velocity = new Vector3(player.velocity.x * 0.5f, 0, 0); // set y velocity to 0 and halve x velocity
+            player.AddForce(Vector2.up * upwardForce, ForceMode2D.Impulse);
         }
     }
 
